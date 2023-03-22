@@ -1,6 +1,6 @@
 # HospitalMS
 
-##Setup: MySQL
+## Setup: MySQL
 mysql> show databases;
 
 mysql> create database hospital;
@@ -11,7 +11,7 @@ Database changed
 mysql> show tables;
 
 ## Spring Starter Project:
-###Name : HospitalMS
+### Name : HospitalMS
 Use Maven/JDK 11
 
 package: com.techwish.hms
