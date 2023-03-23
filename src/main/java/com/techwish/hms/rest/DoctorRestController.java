@@ -15,7 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techwish.hms.payload.DoctorDto;
 import com.techwish.hms.service.IDoctorService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import springfox.documentation.annotations.ApiIgnore;
+
 @RestController
+@Api(description = "DOCTOR OPERATIONS")
 @RequestMapping("/v1/api/doctor")
 public class DoctorRestController {
 
@@ -23,6 +28,7 @@ public class DoctorRestController {
 	private IDoctorService service;
 	
 	@PostMapping("/save")
+	@ApiOperation("CREATING DOCTOR")
 	public ResponseEntity<String> createDoctor(
 			@RequestBody @Valid DoctorDto doctorDto
 			) 
@@ -33,6 +39,7 @@ public class DoctorRestController {
 	}
 	
 	@GetMapping("/all")
+	@ApiIgnore
 	public ResponseEntity<List<DoctorDto>> fetchAllDoctors() {
 		List<DoctorDto> list = service.getAllDoctors();
 		return ResponseEntity.ok(list);
