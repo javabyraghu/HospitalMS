@@ -28,7 +28,6 @@ public class DoctorEntity {
 	@Column(name="DOC_SPEC_COL")
 	private String docSpec;
 	
-	
 	@Column(name="DOC_DEPT_COL")
 	private String docDept;
 

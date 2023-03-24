@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.techwish.hms.entity.DoctorEntity;
 import com.techwish.hms.exception.DoctorNotFoundException;
@@ -57,13 +58,23 @@ public class DoctorServiceImpl implements IDoctorService {
 
 	@Override
 	public void updateDoctor(DoctorDto dto) {
-		if( repo.existsById(dto.getId()) ) {
+		if(null==dto.getId() || !repo.existsById(dto.getId()))
+			throw new DoctorNotFoundException(
+					"DOCTOR " + (dto.getId()== null ? "ID CAN NOT BE NULL " : dto.getId() +" NOT EXIST"));
+		else {
 			DoctorEntity entity = mapper.mapToEntity(dto);
 			repo.save(entity);
 		}
-		else
+	}
+	
+	@Override
+	@Transactional
+	public Integer updateDocDeptById(Long id, String docDept) {
+		if(!repo.existsById(id))
 			throw new DoctorNotFoundException(
-					"DOCTOR '"+dto.getId()+"' NOT EXIST");
+					"DOCTOR '"+id+"' NOT EXIST");
+		
+		return repo.updateDocDeptById(id, docDept);
 	}
 
 }

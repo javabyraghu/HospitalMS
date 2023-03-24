@@ -11,4 +11,5 @@ public interface IDoctorService {
 	List<DoctorDto> getAllDoctors();
 	void deleteDoctor(Long id);
 	void updateDoctor(DoctorDto doctor);
+	Integer updateDocDeptById(Long id, String docDept);
 }
