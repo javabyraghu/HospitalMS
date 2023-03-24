@@ -18,3 +18,4 @@ package: com.techwish.hms
 
 Dep : Web, Lombok, Devtools, Data JPA, MySQL, Validation
 
+#### COPY RIGHTS (C) BY MR.RAGHU 
